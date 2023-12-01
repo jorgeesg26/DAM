@@ -1,0 +1,44 @@
+import java.util.Scanner; 
+public class Graphyintentomejora {
+
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in); 
+    System.out.print("Introduce un número: "); 
+    int numero = sc.nextInt(); 
+    System.out.print("Simple o en color(s/c) "); 
+    String simpleocolor = sc.next(); 
+    sc.close(); 
+    if (numero < 0) { 
+      System.out.println("Por favor,introduzca un número positivo");
+    }
+    int invertido = 0; 
+    int maxDigito = 0; 
+    while (numero > 0) { 
+      invertido = invertido * 10 + numero % 10;
+      if (numero % 10 > maxDigito) { 
+        maxDigito = numero % 10; // lo actualizamos
+      }
+      numero = numero / 10; // actualizamos el número dividiéndolo por 10
+    }
+    int numColumnas = maxDigito + 1; 
+    while (invertido > 0) { 
+      System.out.print(" ---"); 
+      for (int i = 1; i < numColumnas; i++) { 
+        System.out.print("     "); 
+      System.out.println(); 
+      System.out.print("| "+invertido % 10+" |"); 
+      int espacios = numColumnas - (invertido % 10) - 1; 
+      for (int k = 0; k < espacios; k++) { 
+        System.out.print("     "); 
+      }
+      System.out.println(); 
+      System.out.print(" ---"); 
+      for (int j = 1; j <numColumnas; j++) { 
+        System.out.print("     ");
+      }
+      System.out.println(); 
+      invertido = invertido / 10; 
+    }
+  }
+}
+}
